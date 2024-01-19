@@ -82,13 +82,11 @@ export default class HigherOrderFunction extends Component {
         ))
     }
 
-    renderTotalAgeOfDesigners = () => {
+    renderYearsOfDesigners = () => {
         const data = this.state.userData
-        const filteredUserData = data.filter((el) => el.user_type == "Designer")
-        const totalAge = filteredUserData.reduce((acc, el) => {
-            return acc + el.age
-        }, 0)
-        return totalAge
+        return data.filter((el) => el.user_type == "Designer").reduce((total, el) => {
+            return total.years + el.years
+        })
     }
 
 
@@ -118,6 +116,12 @@ export default class HigherOrderFunction extends Component {
                     <h2>Filter all data based on age greater than 28 and age less than or equals to 50</h2>
                     <div className="display-box">
                         <ul>{this.renderByAge()} </ul>
+                    </div>
+                </div>
+                <div>
+                    <h2>Find the total years of the designers</h2>
+                    <div className="display-box">
+                        <ul>{this.renderYearsOfDesigners()} </ul>
                     </div>
                 </div>
 
